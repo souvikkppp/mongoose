@@ -10,7 +10,7 @@ const fruitSchema = new mongoose.Schema ({
   name: String,
   rating: Number,
   review: String
-});/
+});
 
 // in this frist parameter we have to give a singular string that mongoose will convert
 // in plural so here its Fruit it will be fruits in our fruitsDB database,  then fruitSchema
