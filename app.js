@@ -77,7 +77,8 @@ Fruit.find((err, fruits) => {
 
 });
 
-
+// Fruit.deleteOne({_id: "62fdf5d5ea2f42b1ef6dbb43"}, (err) => {});
+// Fruit.updateOne({name: "peach"},{rating: 10}, (err) => {});
 
 
 
@@ -86,14 +87,43 @@ Fruit.find((err, fruits) => {
 
 const peopleSchema = new mongoose.Schema({
   name: String,
-  age: Number
+  age: Number,
+  favoriteFruit: fruitSchema
 });
 
 const People = mongoose.model("People", peopleSchema);
 
+const pinaple = new Fruit({
+  name: "pinaple",
+  rating: 9,
+  review: "nice..."
+});
+
+// pinaple.save();
+
 const people = new People({
   name: "jhon",
   age: 37
-})
 
+})
 // people.save();
+const avocado = new Fruit({
+  name: "avocado",
+  rating: 8,
+  review: "it's so good"
+});
+
+// avocado.save(); // this is to save inside our fruit list
+
+
+People.updateOne({name: "jhon"}, {favoriteFruit: avocado}, (err) => {});
+
+const ami = new People({
+  name: "ami",
+  age: 25,
+  favoriteFruit: pinaple
+})
+//
+// ami.save();
+
+// People.deleteMany({name: "jhon"}, (err) => {});
